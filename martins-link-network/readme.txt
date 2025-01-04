@@ -3,12 +3,12 @@ Contributors: bundgaard
 Tags: free,link,building,network,aioseo
 Requires at least: 5.0
 Tested up to: 6.7.1
-Stable tag: 1.2.37
+Stable tag: 1.2.38
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-GET SEO BACKLINKS FROM 2M+ ARTICLES NOW!!!  
+GET SEO BACKLINKS FROM 3M+ ARTICLES NOW!!!  
 Free, easy SEO backlink link building network. Optimize SEO!
 
 
@@ -17,7 +17,7 @@ Free, easy SEO backlink link building network. Optimize SEO!
 
 
 == Description ==
-By installing this SEO plugin, your website automatically gets easy backlinks from 2M+ articles by anonymously joining Martins 100% free backlink linkbuilding network for optimizing your SEO, improve your search engine rankings and get more free traffic.
+By installing this SEO plugin, your website automatically gets easy backlinks from 3M+ articles by anonymously joining Martins 100% free backlink linkbuilding network for optimizing your SEO, improve your search engine rankings and get more free traffic.
 
 Works great for both WordPress blog SEO, website SEO and WooCommerce SEO.
 
@@ -84,14 +84,11 @@ Erotic websites are allowed, but these are automatically added to their own sepa
 
 == Changelog ==
 
+= 1.2.38 =
+* Minor informational updates
+
 = 1.2.37 =
 * Minor bug fix
-
-= 1.2.36 =
-* Optimized cache time
-
-= 1.2.35 =
-* Updated plugin name and url
 
 
 == Installation ==

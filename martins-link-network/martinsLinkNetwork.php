@@ -3,7 +3,7 @@
  * Plugin Name:       Martins Free And Easy SEO Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://linkbuilding.martinstools.com
  * Description:       Easy SEO backlinks plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.37
+ * Version:           1.2.38
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Martins Tools
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.37";
+    private $version = "1.2.38";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -313,7 +313,7 @@ class martinsLinkNetworkAdmin
             
             echo("<div style='max-width:800px;padding:20px 20px 50px 20px;margin:auto;border-radius:0.25rem;background-color:#fff;'>");
             echo("<h3>Did you know...</h3>");
-            echo("<b>For only $10:</b> Outbound links in your own website is removed, and you will still get backlinks.<br /><br />");
+            echo("<b>For only a few bucks:</b> Outbound links in your own website is removed, and you will still get backlinks.<br /><br />");
             
             echo("<small><b>Hint:</b><br /><i>Actually, you can resell backlinks to your clients too!</i></small><br /><br />");
             echo("<a href='https://easy-link-building.martinstools.com'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Check Out VIP</button></a> <a href='" . esc_url(admin_url("/plugins.php?action=deactivate&plugin=martins-link-network%2FmartinsLinkNetwork.php&plugin_status=all&paged=1&s&_wpnonce=" . $_GET["_wpnonce"] . "&skip_martins-link-network-deactivation=1")) . "'><button style='font-size:0.925rem;color:#fff;background-color:#dddddd;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Just Deactivate</button></a>");
