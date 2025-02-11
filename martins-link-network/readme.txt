@@ -36,27 +36,6 @@ This plugin is relying on the free 3rd party "Martins Tools" (Software as a serv
 [Martins Tools](https://linkbuilding.martinstools.com) - [Terms](https://linkbuilding.martinstools.com/terms.html)
 
 
-= Are matched backlinks possible for small niches and foreign languages? =
-You need to test it with your own website. 
-
-Depending on your niche and language, you might see not so relevant backlinks. Your website might be rare in the network, and therefore not many websites will match yours.
-
-The network grows every day, and match quality is directly related to the size of the network. Just be patient and share the word. Non-relevant links will just have a lower backlink value than relevant links.
-
-You are welcome to try again at a later time, if these free backlinks can't be matched properly for your website at the moment.
-But please don't write a bad review, just because your specific website can't be matched properly for now.
-
-
-= Are statistics available? =
-Yes! In your admin dashboard menu, you will find a really beautiful dashboard called "Martins linkbuilding".
-This dashboard will give you 1 month of detailed statistics.
-
-
-= How do i validate the results? =
-Link building takes time for both search engines and Ahrefs to discover, so give it at least 14 days and use the great external tool, "Ahrefs free backlink checker", to watch your domain rating (pagerank) increase and to see a list of your new backlinks, which will grow over time and boost your SEO.
-[Ahrefs Backlink Checker](https://ahrefs.com/backlink-checker)
-
-
 = How does it work? =
 A few links will show up in all websites in the network.
 Websites will not exchange external links directly with other websites, as this strategy could give you some SEO problems.
@@ -78,8 +57,29 @@ This plugin is just a simple piece of a giant SEO puzzle, as it is backed by a s
 Works perfectly with Yoast, AIOSEO and internal link builders as a great upgrade. 
 
 
+= Are matched backlinks possible for small niches and foreign languages? =
+You need to test it with your own website. 
+
+Depending on your niche and language, you might see not so relevant backlinks. Your website might be rare in the network, and therefore not many websites will match yours.
+
+The network grows every day, and match quality is directly related to the size of the network. Just be patient and share the word. Non-relevant links will just have a lower backlink value than relevant links.
+
+You are welcome to try again at a later time, if these free backlinks can't be matched properly for your website at the moment.
+But please don't write a bad review, just because your specific website can't be matched properly for now.
+
+
 = How about offensive content? =
 Erotic websites are allowed, but these are automatically added to their own separate network.
+
+
+= Are statistics available? =
+Yes! In your admin dashboard menu, you will find a really beautiful dashboard called "Martins linkbuilding".
+This dashboard will give you 1 month of detailed statistics.
+
+
+= How do i validate the results? =
+Link building takes time for both search engines and Ahrefs to discover, so give it at least 14 days and use the great external tool, "Ahrefs free backlink checker", to watch your domain rating (pagerank) increase and to see a list of your new backlinks, which will grow over time and boost your SEO.
+[Ahrefs Backlink Checker](https://ahrefs.com/backlink-checker)
 
 
 == Changelog ==
