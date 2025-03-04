@@ -2,7 +2,7 @@
 Contributors: bundgaard
 Tags: free,link,building,network,aioseo
 Requires at least: 5.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Stable tag: 1.2.38
 Requires PHP: 5.6
 License: GPLv2 or later
