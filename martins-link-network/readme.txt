@@ -2,8 +2,8 @@
 Contributors: bundgaard
 Tags: free,link,building,network,aioseo
 Requires at least: 5.0
-Tested up to: 6.7.2
-Stable tag: 1.2.38
+Tested up to: 6.8.0
+Stable tag: 1.2.39
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -83,6 +83,9 @@ Link building takes time for both search engines and Ahrefs to discover, so give
 
 
 == Changelog ==
+
+= 1.2.39 =
+* Changed support link
 
 = 1.2.38 =
 * Minor informational updates
