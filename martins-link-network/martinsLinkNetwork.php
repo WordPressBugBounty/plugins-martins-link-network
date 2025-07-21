@@ -3,7 +3,7 @@
  * Plugin Name:       Martins Free And Easy SEO Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://linkbuilding.martinstools.com
  * Description:       Easy SEO backlinks plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.39
+ * Version:           1.2.40
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Martins Tools
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.39";
+    private $version = "1.2.40";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -150,59 +150,86 @@ class martinsLinkNetworkFront
     
     
     // Insert links into content
-    public function insertLinksContent($content) 
-    {
-        // Check if we're inside the main loop in a single Post.
-        if (is_array($this->links) && count($this->links) > 0 && is_main_query() && in_the_loop()) {
-            $extend = "";
-            
-            for ($loop = 1; $loop <= 2; $loop++) {
-                $i = 0;
-                
-                foreach($this->links as $link) {
+    public function insertLinksContent($content) {
+        if (!is_array($this->links) || count($this->links) === 0 || !is_main_query() || !in_the_loop()) {
+            return $content;
+        }
+
+        // Remove <script> og <style> temporary and save for later
+        $placeholders = [];
+        $content = preg_replace_callback('/<(script|style)[^>]*>.*?<\/\1>/is', function ($matches) use (&$placeholders) {
+            $key = '__PLACEHOLDER_' . count($placeholders) . '__';
+            $placeholders[$key] = $matches[0];
+            return $key;
+        }, $content);
+
+        // Split content into tags and text
+        $parts = preg_split('/(<[^>]+>)/', $content, -1, PREG_SPLIT_DELIM_CAPTURE);
+        $output = "";
+
+        for ($loop = 1; $loop <= 2; $loop++) {
+            $this->links = array_values($this->links); // Reindex
+
+            foreach ($parts as $index => $part) {
+                // Check if this is a HTML tag or text
+                if (preg_match('/^<[^>]+>$|^__PLACEHOLDER_\d+__$/', $part)) {
+                    $output .= $part;
+                    continue;
+                }
+
+                // Handl text nodes
+                foreach ($this->links as $i => $link) {
                     $rel = wp_rand(1, 100) <= (isset($link["fp"]) ? (int)$link["fp"] : 100) ? "follow" : "nofollow";
-                    
-                    // Group main link and pages for shuffling
                     $linkGroup = $this->groupLinkPages($link);
-
-                    // Try matching pages keywords IF pages exists (Some websites do not have any pages)
                     $isMatched = false;
+
                     shuffle($linkGroup);
-
-                    foreach($linkGroup as $page) {
-                        // Uncomment these keywords for testing
-                        //$page["keywords"][] = ["name" => "ipsum dolor sit", "text" => "Lorem ipsum dolor sit amet"];
-                        //$page["keywords"][] = ["name" => "dolor sit", "text" => "Ipsum dolor sit amet"];
-                        
+                    foreach ($linkGroup as $page) {
                         shuffle($page["keywords"]);
-                        foreach($page["keywords"] as $keyword) {
-                            $isLongTail = count(explode(" ", $keyword["name"])) > 1 ? true : false;
-                            $pos = strrpos($content, " " . $keyword["name"] . " ");
-                            $endTag = substr(substr($content, $pos), strpos(substr($content, $pos), "<"), 3);
 
-                            // First loop tries longtail keywords only, next loop single keywords
-                            if ((($loop == 1 && $isLongTail) || ($loop == 2 && !$isLongTail)) && $pos !== false && !in_array($keyword["name"], $this->usedKeyword) && $endTag != "</a" && $endTag != "</h")
-                            {
-                                $content = substr_replace($content, "<a href='" . $page["url"] . "' target='_blank' rel='" . $rel . "'>" . $keyword["name"] . "</a>", $pos+1, strlen($keyword["name"]));
-                                unset($this->links[$i]);
+                        foreach ($page["keywords"] as $keyword) {
+                            $isLongTail = str_word_count($keyword["name"]) > 1;
+                            $pos = strrpos($part, " " . $keyword["name"] . " ");
+
+                            if ((($loop == 1 && $isLongTail) || ($loop == 2 && !$isLongTail)) &&
+                                $pos !== false &&
+                                !in_array($keyword["name"], $this->usedKeyword)) {
+
+                                $part = substr_replace(
+                                    $part,
+                                    "<a href='" . esc_url($page["url"]) . "' target='_blank' rel='" . esc_attr($rel) . "'>" . esc_html($keyword["name"]) . "</a>",
+                                    $pos + 1,
+                                    strlen($keyword["name"])
+                                );
+
                                 $this->usedKeyword[] = $keyword["name"];
+                                unset($this->links[$i]);
                                 $isMatched = true;
-                                
-                                break 2; // Only make 1 keyword clickable, and continue with next link in linkGroup
+                                break 2;
                             }
                         }
                     }
+                }
 
-                    $i++;
-                }   
-                
-                // Reindex links array as we might have removed some items
-                $this->links = array_values($this->links);
+                $output .= $part;
             }
+
+            // Prepare output for next loop
+            $parts = preg_split('/(<[^>]+>)/', $output, -1, PREG_SPLIT_DELIM_CAPTURE);
+            $output = "";
         }
-        
-        return $content;
+
+        // Put content back together
+        $output = implode('', $parts);
+
+        // Re-add <script> and <style>-tags
+        foreach ($placeholders as $key => $original) {
+            $output = str_replace($key, $original, $output);
+        }
+
+        return $output;
     }
+
     
     
     public function insertLinksFooter() 
