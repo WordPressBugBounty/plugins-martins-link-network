@@ -3,7 +3,7 @@
  * Plugin Name:       Martins Free And Easy SEO Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://linkbuilding.martinstools.com
  * Description:       Easy SEO backlinks plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.40
+ * Version:           1.2.41
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Martins Tools
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.40";
+    private $version = "1.2.41";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -290,7 +290,7 @@ class martinsLinkNetworkFront
             $allowedHtml['a']['style'] = array();
             $allowedHtml['a']['rel'] = array();
             
-            echo("<div id='" . md5("martinslinknetwork" . str_replace("http://", "", str_replace("https://", "", get_site_url()))) . "' style='display:block;width:100%;font-size:9px;color:#777777;border:0;border-top:1px solid #ccc;background-color:#ffffff;padding:5px;text-align:center;'>" . wp_kses(substr($linkStr, 0, -1), $allowedHtml) . "</div>");
+            echo("<div id='" . md5("martinslinknetwork" . str_replace("http://", "", str_replace("https://", "", get_site_url()))) . "' style='display:block;width:100%;font-size:9px;color:#777777;border:0;border-top:1px solid #ccc;background-color:#ffffff;padding:5px 0;text-align:center;'>" . wp_kses(substr($linkStr, 0, -1), $allowedHtml) . "</div>");
         }
     }
     

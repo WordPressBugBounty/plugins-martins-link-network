@@ -3,7 +3,7 @@ Contributors: bundgaard
 Tags: free,link,building,network,aioseo
 Requires at least: 5.0
 Tested up to: 6.8.2
-Stable tag: 1.2.40
+Stable tag: 1.2.41
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -84,14 +84,14 @@ Link building takes time for both search engines and Ahrefs to discover, so give
 
 == Changelog ==
 
+= 1.2.41 =
+* Fixed minor design issue in some wordpress themes
+
 = 1.2.40 =
 * Optimized backlink positions
 
 = 1.2.39 =
 * Changed support link
-
-= 1.2.38 =
-* Minor informational updates
 
 
 == Installation ==
