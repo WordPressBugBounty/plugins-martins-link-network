@@ -2,8 +2,8 @@
 Contributors: bundgaard
 Tags: free,link,building,network,aioseo
 Requires at least: 5.0
-Tested up to: 6.8.2
-Stable tag: 1.2.41
+Tested up to: 6.9.1
+Stable tag: 1.2.43
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,9 +22,10 @@ By installing this SEO plugin, your website automatically gets easy backlinks fr
 Works great for both WordPress blog SEO, website SEO and WooCommerce SEO.
 
 
-= Interested in free ads instead? =
-Check out: [Martins Free Ad Network](https://adnetwork.martinstools.com)
-
+= Interested in these services instead? =
+[Martins Free Ad Network](https://www.martinstools.com/ads)
+[Martins Free Bio Link Pages](https://www.martinstools.com/biolinks)
+[Earn With Martin](https://www.martinstools.com/earn)
 
 = What are the benefits? =
 Martins free & easy backlink linkbuilding network will assist your website in reaching top positions in search engines (SEO), using a safe, proven, anonymous, untraceable and tested link building strategy from SEO experts.
@@ -33,7 +34,7 @@ Martins free & easy backlink linkbuilding network will assist your website in re
 = 3rd party service notice =
 This plugin is relying on the free 3rd party "Martins Tools" (Software as a service), and sends some of your urls to the service for creating a backlink statistics dashboard for you.
 
-[Martins Tools](https://linkbuilding.martinstools.com) - [Terms](https://linkbuilding.martinstools.com/terms.html)
+[Martins Tools](https://www.martinstools.com) - [Terms](https://www.martinstools.com/terms.html)
 
 
 = How does it work? =
@@ -84,14 +85,14 @@ Link building takes time for both search engines and Ahrefs to discover, so give
 
 == Changelog ==
 
+= 1.2.43 =
+* Updated a few more links
+
+= 1.2.42 =
+* Updated a few links
+
 = 1.2.41 =
 * Fixed minor design issue in some wordpress themes
-
-= 1.2.40 =
-* Optimized backlink positions
-
-= 1.2.39 =
-* Changed support link
 
 
 == Installation ==

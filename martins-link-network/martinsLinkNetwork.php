@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name:       Martins Free And Easy SEO Link Building - Genuine SEO BackLinks
- * Plugin URI:        https://linkbuilding.martinstools.com
+ * Plugin URI:        https://www.martinstools.com/linkbuilding
  * Description:       Easy SEO backlinks plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.41
+ * Version:           1.2.43
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Martins Tools
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.41";
+    private $version = "1.2.43";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -343,7 +343,7 @@ class martinsLinkNetworkAdmin
             echo("<b>For only a few bucks:</b> Outbound links in your own website is removed, and you will still get backlinks.<br /><br />");
             
             echo("<small><b>Hint:</b><br /><i>Actually, you can resell backlinks to your clients too!</i></small><br /><br />");
-            echo("<a href='https://easy-link-building.martinstools.com'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Check Out VIP</button></a> <a href='" . esc_url(admin_url("/plugins.php?action=deactivate&plugin=martins-link-network%2FmartinsLinkNetwork.php&plugin_status=all&paged=1&s&_wpnonce=" . $_GET["_wpnonce"] . "&skip_martins-link-network-deactivation=1")) . "'><button style='font-size:0.925rem;color:#fff;background-color:#dddddd;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Just Deactivate</button></a>");
+            echo("<a href='https://www.martinstools.com/linkbuilding'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Check Out VIP</button></a> <a href='" . esc_url(admin_url("/plugins.php?action=deactivate&plugin=martins-link-network%2FmartinsLinkNetwork.php&plugin_status=all&paged=1&s&_wpnonce=" . $_GET["_wpnonce"] . "&skip_martins-link-network-deactivation=1")) . "'><button style='font-size:0.925rem;color:#fff;background-color:#dddddd;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Just Deactivate</button></a>");
             
             echo("<br /><br /><h3>Are you more into free ads for your website?</h3>");
             echo("<a href='" . admin_url('?page=martins-link-network-install-ad-network') . "'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Install Martins Free Ad Network</button></a>");
@@ -367,7 +367,7 @@ class martinsLinkNetworkAdmin
 
             $wp_upgrader = new WP_Upgrader();
             $install = $wp_upgrader->run([
-                "package"                       => "https://adnetwork.martinstools.com/assets/martins-ad-network.zip", // plugin_dir_path(__FILE__) . "martins-ad-network.zip",
+                "package"                       => "https://www.martinstools.com/assets/martins-ad-network.zip", // plugin_dir_path(__FILE__) . "martins-ad-network.zip",
                 "destination"                   => plugin_dir_path(__FILE__) . "../martins-ad-network",
                 "clear_destination"             => true,
                 "abort_if_destination_exists"   => false
@@ -388,7 +388,7 @@ class martinsLinkNetworkAdmin
                 echo("<b>Could not activate plugin!</b><br /><br />");
             }
             
-            echo("<a href='" . admin_url("plugins.php") . "'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Continue</button></a> <a href='https://free-ad-network.martinstools.com' target='_blank'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>How it works</button></a>");
+            echo("<a href='" . admin_url("plugins.php") . "'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Continue</button></a> <a href='https://www.martinstools.com/ads' target='_blank'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>How it works</button></a>");
             echo("</div>");
             echo("</div>");
             die();
@@ -426,10 +426,11 @@ class martinsLinkNetworkAdmin
     {
         // Add links in plugin list
         $mylinks = array(
-            "<a href='https://linkbuilding.martinstools.com' target='_blank'><b>Upgrade VIP</b></a>",
+            "<a href='https://www.martinstools.com/linkbuilding' target='_blank'><b>Upgrade VIP</b></a>",
             "<a href='" . admin_url('?page=martins-link-network-dashboard') . "'>Dashboard</a>",
             "<a href='" . admin_url('?page=martins-link-network-install-ad-network') . "'><b>Install Free Ad Network</b></a>",
-            "<a href='https://linkbuilding.martinstools.com#contact' target='_blank'>Support</a>"
+            "<a href='https://www.martinstools.com/earn' target='_blank'>Earn</a>",
+            "<a href='https://www.martinstools.com#contact' target='_blank'>Support</a>"
         );
         
        return array_merge($mylinks, $links);
