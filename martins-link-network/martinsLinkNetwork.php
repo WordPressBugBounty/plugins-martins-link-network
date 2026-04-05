@@ -3,7 +3,7 @@
  * Plugin Name:       Martins Free And Easy SEO Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://www.martinstools.com/linkbuilding
  * Description:       Easy SEO backlinks plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.43
+ * Version:           1.2.44
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Martins Tools
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.43";
+    private $version = "1.2.44";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -302,54 +302,179 @@ class martinsLinkNetworkAdmin
     private $url = "";
     private $key = "";
     
-    
     public function __construct() 
     {
         $this->url = wp_parse_url(get_site_url());
         
-        //add_action('admin_init', [$this, "installAdNetwork"]);
         add_action('admin_init', [$this, "redirectDashboard"]);
         add_action('admin_init', [$this, "showDeactivation"]);
         add_action('admin_menu', [$this, "addMenuItems"]);
+        add_action('admin_enqueue_scripts', [$this, 'adminScripts']);
         add_action( 'admin_head', function() {
             remove_submenu_page( 'index.php', 'martins-link-network-install-ad-network' );
         } );
         add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'addActionLinks']);
         register_activation_hook(__FILE__, [$this, 'pluginActivated']);
     }
-    
+
+    public function adminScripts($hook) {
+        if (strpos($hook, 'martins-link-network') === false) {
+            return;
+        }
+        wp_enqueue_style('maadne-inter-font', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap', [], null);
+    }
     
     public function pluginActivated()
     {
         $martinsLinkNetworkFront = new martinsLinkNetworkFront(); 
         $martinsLinkNetworkFront->getData();
     }
-    
+
+    private function getCommonStyles() {
+        return "
+            <style>
+                .maadne-admin-page {
+                    max-width: 800px;
+                    margin-top: 20px;
+                    font-family: 'Inter', sans-serif;
+                }
+                .maadne-logo {
+                    font-weight: 900;
+                    font-size: 32px;
+                    letter-spacing: -2px;
+                    color: inherit;
+                    margin-bottom: 30px;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                }
+                .maadne-logo span {
+                    color: #00f2ff;
+                    text-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+                }
+                .maadne-card {
+                    background: #fff;
+                    border: 1px solid #c3c4c7;
+                    border-radius: 8px;
+                    padding: 40px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                }
+                .maadne-btn-primary {
+                    background: #00f2ff !important;
+                    color: #000 !important;
+                    border: 1px solid #00b8c4 !important;
+                    padding: 8px 30px !important;
+                    font-weight: 700 !important;
+                    text-transform: uppercase !important;
+                    letter-spacing: 0.5px !important;
+                    border-radius: 3px !important;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    line-height: 1.5 !important;
+                    box-shadow: none !important;
+                    text-shadow: none !important;
+                    height: auto !important;
+                }
+                .maadne-btn-primary:hover {
+                    background: #00d9e6 !important;
+                    border-color: #00b8c4 !important;
+                    color: #000 !important;
+                }
+                .maadne-badge {
+                    background: #00f2ff15;
+                    border: 1px solid #00f2ff30;
+                    color: #00b8c4;
+                    padding: 4px 12px;
+                    border-radius: 100px;
+                    font-size: 10px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    display: inline-block;
+                    margin-bottom: 15px;
+                }
+                .maadne-footer {
+                    margin-top: 50px;
+                    padding-top: 25px;
+                    border-top: 1px solid #dcdcde;
+                    color: #646970;
+                    font-size: 13px;
+                }
+            </style>
+        ";
+    }
     
     public function dashboardPage() 
     {
-        echo("Oops!!! Unable to connect to Dashboard.<br />Please try again later...");
+        ?>
+        <div class="wrap">
+            <?php echo $this->getCommonStyles(); ?>
+            <div class="maadne-admin-page" style="margin-top: 40px; font-family: 'Inter', sans-serif;">
+                <div class="maadne-logo" style="font-size: 42px;">MARTINS<span>TOOLS</span></div>
+                <h2 style="font-size: 24px; margin-top: 30px;">Unable to connect to Dashboard</h2>
+                <p style="color: #646970; font-size: 16px; max-width: 600px; margin-bottom: 30px;">We couldn't establish a secure connection to the SEO external dashboard. Please check your internet connection or try again later.</p>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="<?php echo admin_url('index.php?page=martins-link-network-dashboard'); ?>" class="button button-primary maadne-btn-primary">Retry Connection</a>
+                    <a href="<?php echo admin_url('plugins.php'); ?>" class="button button-secondary">Go to Plugins</a>
+                </div>
+            </div>
+        </div>
+        <?php
     }
 
-    
     public function showDeactivation() 
     {
         if (isset($_GET['action']) && $_GET['action'] == 'deactivate' && isset($_GET['plugin']) && $_GET['plugin'] == 'martins-link-network/martinsLinkNetwork.php' && !isset($_GET["skip_martins-link-network-deactivation"])) {
-            echo("<html><body style='text-align:center;color:#000;margin-top:50px;background-color:#f5f7fb;font-family:Helvetica,Arial,sans-serif;'>");
-            echo("<h1>Martins Link Building</h1>");
-            
-            echo("<div style='max-width:800px;padding:20px 20px 50px 20px;margin:auto;border-radius:0.25rem;background-color:#fff;'>");
-            echo("<h3>Did you know...</h3>");
-            echo("<b>For only a few bucks:</b> Outbound links in your own website is removed, and you will still get backlinks.<br /><br />");
-            
-            echo("<small><b>Hint:</b><br /><i>Actually, you can resell backlinks to your clients too!</i></small><br /><br />");
-            echo("<a href='https://www.martinstools.com/linkbuilding'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Check Out VIP</button></a> <a href='" . esc_url(admin_url("/plugins.php?action=deactivate&plugin=martins-link-network%2FmartinsLinkNetwork.php&plugin_status=all&paged=1&s&_wpnonce=" . $_GET["_wpnonce"] . "&skip_martins-link-network-deactivation=1")) . "'><button style='font-size:0.925rem;color:#fff;background-color:#dddddd;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Just Deactivate</button></a>");
-            
-            echo("<br /><br /><h3>Are you more into free ads for your website?</h3>");
-            echo("<a href='" . admin_url('?page=martins-link-network-install-ad-network') . "'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Install Martins Free Ad Network</button></a>");
-            
-            echo("</div>");
-            echo("</body></html>");
+            ?>
+            <!DOCTYPE html>
+            <html <?php language_attributes(); ?>>
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Deactivating Martins Link Building</title>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
+                <?php echo $this->getCommonStyles(); ?>
+                <style>
+                    body { background: #f0f2f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+                    .maadne-admin-page { margin-top: 0; padding: 20px; }
+                    .maadne-card { text-align: center; }
+                    h3 { font-size: 1.5rem; letter-spacing: -0.5px; margin-top: 0; }
+                    .hint-box { background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 6px; margin: 20px 0; font-style: italic; color: #646970; }
+                </style>
+            </head>
+            <body>
+                <div class="maadne-admin-page">
+                    <div class="maadne-logo" style="justify-content: center;">MARTINS<span>TOOLS</span></div>
+                    <div class="maadne-card">
+                        <div class="maadne-badge">Before you go...</div>
+                        <h3>Did you know?</h3>
+                        <p style="font-size: 16px; line-height: 1.6; color: #1d2327;">
+                            <b>For only a few bucks:</b> Outbound links in your own website are removed, and you will still get backlinks.
+                            Actually, you can resell backlinks to your clients too!
+                        </p>
+                        
+                        <div class="hint-box">
+                            "Boost your SEO rankings even further with our VIP network."
+                        </div>
+
+                        <div style="margin: 30px 0;">
+                            <a href="https://www.martinstools.com/linkbuilding" target="_blank" class="maadne-btn-primary">Check Out VIP</a>
+                            <a href="<?php echo esc_url(admin_url("/plugins.php?action=deactivate&plugin=martins-link-network%2FmartinsLinkNetwork.php&plugin_status=all&paged=1&s&_wpnonce=" . $_GET["_wpnonce"] . "&skip_martins-link-network-deactivation=1")); ?>" 
+                               class="button button-link" style="color: #646970; margin-left: 15px;">Just Deactivate</a>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+                        
+                        <h4 style="margin-bottom: 15px;">Are you more into free ads for your website?</h4>
+                        <a href="<?php echo admin_url('index.php?page=martins-link-network-install-ad-network'); ?>" class="button button-secondary" style="height: auto; padding: 8px 20px;">Install Martins Free Ad Network</a>
+                    </div>
+                </div>
+            </body>
+            </html>
+            <?php
             die();
         }
     }
@@ -359,38 +484,50 @@ class martinsLinkNetworkAdmin
     public function installAdNetwork() 
     {
         if (isset($_GET['page']) && $_GET['page'] == 'martins-link-network-install-ad-network') {
-            echo("<div style='width:100%;height:100%;padding:0;margin:0;text-align:center;'>");
-            echo("<h1>Martins Ad Network</h1>");
-
-            echo("<div style='max-width:800px;padding:20px 20px 50px 20px;margin:auto;border-radius:0.25rem;background-color:#fff;'>");
-            echo("<h3>Installing plugin</h3>");
-
-            $wp_upgrader = new WP_Upgrader();
-            $install = $wp_upgrader->run([
-                "package"                       => "https://www.martinstools.com/assets/martins-ad-network.zip", // plugin_dir_path(__FILE__) . "martins-ad-network.zip",
-                "destination"                   => plugin_dir_path(__FILE__) . "../martins-ad-network",
-                "clear_destination"             => true,
-                "abort_if_destination_exists"   => false
-            ]);
-            
-            if (is_array($install)) {
-                echo("<b>Plugin installed!</b><br /><br />");
-            }
-            else {
-                echo("<b>Could not install plugin!</b><br /><br />");
-            }
-            
-            $activate = activate_plugin( 'martins-ad-network/martinsAdNetwork.php');
-            if (!$activate) { // No errors
-                echo("<b>Plugin activated!</b><br /><br />");
-            }
-            else {
-                echo("<b>Could not activate plugin!</b><br /><br />");
-            }
-            
-            echo("<a href='" . admin_url("plugins.php") . "'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>Continue</button></a> <a href='https://www.martinstools.com/ads' target='_blank'><button style='font-size:0.925rem;color:#fff;background-color:#1cbb8c;padding:0.4rem 1rem;border-radius:0.3rem;border:0;cursor:pointer;'>How it works</button></a>");
-            echo("</div>");
-            echo("</div>");
+            ?>
+            <div class="wrap">
+                <?php echo $this->getCommonStyles(); ?>
+                <div class="maadne-admin-page" style="margin-top: 40px;">
+                    <div class="maadne-logo">MARTINS<span>TOOLS</span></div>
+                    <div class="maadne-card">
+                        <div class="maadne-badge">Automated Installation</div>
+                        <h3 style="margin-top:0; margin-bottom: 25px;">Installing Martins Ad Network</h3>
+                        
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
+                            <?php
+                            $wp_upgrader = new WP_Upgrader();
+                            $install = $wp_upgrader->run([
+                                "package"                       => "https://www.martinstools.com/assets/martins-ad-network.zip",
+                                "destination"                   => plugin_dir_path(__FILE__) . "../martins-ad-network",
+                                "clear_destination"             => true,
+                                "abort_if_destination_exists"   => false
+                            ]);
+                            
+                            if (is_array($install)) {
+                                echo("<p style='color: #1cbb8c;'><strong>✓</strong> Plugin files installed successfully.</p>");
+                            }
+                            else {
+                                echo("<p style='color: #d63638;'><strong>✕</strong> Could not install plugin files.</p>");
+                            }
+                            
+                            $activate = activate_plugin( 'martins-ad-network/martinsAdNetwork.php');
+                            if (!$activate) {
+                                echo("<p style='color: #1cbb8c;'><strong>✓</strong> Plugin activated and ready.</p>");
+                            }
+                            else {
+                                echo("<p style='color: #d63638;'><strong>✕</strong> Could not activate plugin automatically.</p>");
+                            }
+                            ?>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <a href="<?php echo admin_url("plugins.php"); ?>" class="button button-primary maadne-btn-primary">Go to Plugins</a>
+                            <a href="https://www.martinstools.com/ads" target="_blank" class="button button-secondary">How it works</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
             die();
         }
     }
@@ -399,10 +536,8 @@ class martinsLinkNetworkAdmin
     public function redirectDashboard() 
     {
         if (isset($_GET['page']) && $_GET['page'] == 'martins-link-network-dashboard') {
-            // Get key for the dashboard
             $this->getDashboardKey();
 
-            // Redirect to external dashboard
             if ($this->key != "failed") {
                 wp_redirect("https://linknetwork.martinstools.com/admin/#/statswp/" . $this->url["host"] . "/" . $this->key);
                 exit;
@@ -424,13 +559,11 @@ class martinsLinkNetworkAdmin
     
     public function addActionLinks($links) 
     {
-        // Add links in plugin list
         $mylinks = array(
-            "<a href='https://www.martinstools.com/linkbuilding' target='_blank'><b>Upgrade VIP</b></a>",
-            "<a href='" . admin_url('?page=martins-link-network-dashboard') . "'>Dashboard</a>",
-            "<a href='" . admin_url('?page=martins-link-network-install-ad-network') . "'><b>Install Free Ad Network</b></a>",
-            "<a href='https://www.martinstools.com/earn' target='_blank'>Earn</a>",
-            "<a href='https://www.martinstools.com#contact' target='_blank'>Support</a>"
+            "<a href='https://www.martinstools.com/linkbuilding' target='_blank'><b>Upgrade to VIP</b></a>",
+            "<a href='" . admin_url('index.php?page=martins-link-network-dashboard') . "'>Dashboard</a>",
+            "<a href='" . admin_url('index.php?page=martins-link-network-install-ad-network') . "'><b>Install Free Ad Network</b></a>",
+            "<a href='https://www.martinstools.com#support' target='_blank'>Support</a>"
         );
         
        return array_merge($mylinks, $links);
@@ -439,21 +572,18 @@ class martinsLinkNetworkAdmin
     
     public function getDashboardKey()
     {
-        // Try getting dashboard key from server
         $result = wp_remote_post("https://linknetwork.martinstools.com/api/domainsV2/?getKey", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email")]]);
-        if (!isset($result->errors)) {
+        if (!is_wp_error($result)) {
             $this->data = json_decode($result["body"]);
 
-            if ($this->data->status == "success") {
+            if ($this->data && isset($this->data->status) && $this->data->status == "success") {
                 $key = $this->data->key;
                 update_option("martinslinknetwork_key", $key, false);
             }
             else {
-                // New key not allowed. Using cached key
                 $key = get_option("martinslinknetwork_key");        
             }
         } 
-        // New key failed
         else {
             $key = "failed";
         }

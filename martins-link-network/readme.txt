@@ -1,9 +1,9 @@
-=== Martins Free And Easy SEO BackLink Link Building Network, Improve Rankings And Traffic ===
+=== Martins Free SEO Link Building Network, Improve BackLinks, Rankings and Traffic ===
 Contributors: bundgaard
 Tags: free,link,building,network,aioseo
 Requires at least: 5.0
-Tested up to: 6.9.1
-Stable tag: 1.2.43
+Tested up to: 7.0.0
+Stable tag: 1.2.44
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 GET SEO BACKLINKS FROM 3M+ ARTICLES NOW!!!  
 Free, easy SEO backlink link building network. Optimize SEO!
 
-
+ 
 == Screenshots ==
 1. Link building statistics dashboard
 
@@ -24,8 +24,7 @@ Works great for both WordPress blog SEO, website SEO and WooCommerce SEO.
 
 = Interested in these services instead? =
 [Martins Free Ad Network](https://www.martinstools.com/ads)
-[Martins Free Bio Link Pages](https://www.martinstools.com/biolinks)
-[Earn With Martin](https://www.martinstools.com/earn)
+[The Only Bio Link That Pays You](https://www.martinstools.com/biolinks)
 
 = What are the benefits? =
 Martins free & easy backlink linkbuilding network will assist your website in reaching top positions in search engines (SEO), using a safe, proven, anonymous, untraceable and tested link building strategy from SEO experts.
@@ -85,14 +84,14 @@ Link building takes time for both search engines and Ahrefs to discover, so give
 
 == Changelog ==
 
+= 1.2.44 =
+* Updated design and links
+
 = 1.2.43 =
 * Updated a few more links
 
 = 1.2.42 =
 * Updated a few links
-
-= 1.2.41 =
-* Fixed minor design issue in some wordpress themes
 
 
 == Installation ==
