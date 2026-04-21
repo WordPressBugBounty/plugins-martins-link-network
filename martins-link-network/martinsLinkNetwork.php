@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Martins Free And Easy SEO Link Building - Genuine SEO BackLinks
- * Plugin URI:        https://www.martinstools.com/linkbuilding
- * Description:       Easy SEO backlinks plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.45
+ * Plugin Name:       LexonRank: Free Link Building - Genuine SEO BackLinks
+ * Plugin URI:        https://lexonrank.com
+ * Description:       Easy SEO backlink plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
+ * Version:           1.2.46
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Martins Tools
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.45";
+    private $version = "1.2.46";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -96,7 +96,7 @@ class martinsLinkNetworkFront
         else {
             // Check if saving cache is possible
             if (!$wp_filesystem->put_contents($this->cacheFile, "-")) {
-                echo("<hr style='margin:0;padding:0;height:1px;border:0;' /><div style='text-align:center;'><b>Martins Link Network plugin, could not write cache to upload folder!</b><br />Please check your folder permissions...</div>");
+                echo("<hr style='margin:0;padding:0;height:1px;border:0;' /><div style='text-align:center;'><b>LexonRank plugin, could not write cache to upload folder!</b><br />Please check your folder permissions...</div>");
             }
             else { 
                 // Clear cache test
@@ -105,7 +105,7 @@ class martinsLinkNetworkFront
                 }
                 
                 // Save cache
-                $result = wp_remote_post("https://linknetwork.martinstools.com/api/domainsV2", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email"), "version" => $this->version, "logData" => $logData]]);
+                $result = wp_remote_post("https://lexonrank.com/api/domainsV2", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email"), "version" => $this->version, "logData" => $logData]]);
                 if (!isset($result->errors)) {
                     $this->data = $result["body"];
                     $wp_filesystem->put_contents($this->cacheFile, $this->data);
@@ -413,7 +413,7 @@ class martinsLinkNetworkAdmin
         <div class="wrap">
             <?php echo $this->getCommonStyles(); ?>
             <div class="maadne-admin-page" style="margin-top: 40px; font-family: 'Inter', sans-serif;">
-                <div class="maadne-logo" style="font-size: 42px;">MARTINS<span>TOOLS</span></div>
+                <div class="maadne-logo" style="font-size: 42px;">LEXON<span>RANK</span></div>
                 <h2 style="font-size: 24px; margin-top: 30px;">Unable to connect to Dashboard</h2>
                 <p style="color: #646970; font-size: 16px; max-width: 600px; margin-bottom: 30px;">We couldn't establish a secure connection to the SEO external dashboard. Please check your internet connection or try again later.</p>
                 <div style="display: flex; gap: 10px; align-items: center;">
@@ -434,7 +434,7 @@ class martinsLinkNetworkAdmin
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Deactivating Martins Link Building</title>
+                <title>Deactivating LexonRank</title>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
                 <?php echo $this->getCommonStyles(); ?>
                 <style>
@@ -447,7 +447,7 @@ class martinsLinkNetworkAdmin
             </head>
             <body>
                 <div class="maadne-admin-page">
-                    <div class="maadne-logo" style="justify-content: center;">MARTINS<span>TOOLS</span></div>
+                    <div class="maadne-logo" style="justify-content: center;">LEXON<span>RANK</span></div>
                     <div class="maadne-card">
                         <div class="maadne-badge">Before you go...</div>
                         <h3>Did you know?</h3>
@@ -461,7 +461,7 @@ class martinsLinkNetworkAdmin
                         </div>
 
                         <div style="margin: 30px 0;">
-                            <a href="https://www.martinstools.com/linkbuilding" target="_blank" class="maadne-btn-primary">Check Out VIP</a>
+                            <a href="https://lexonrank.com" target="_blank" class="maadne-btn-primary">Check Out VIP</a>
                             <a href="<?php echo esc_url(admin_url("/plugins.php?action=deactivate&plugin=martins-link-network%2FmartinsLinkNetwork.php&plugin_status=all&paged=1&s&_wpnonce=" . $_GET["_wpnonce"] . "&skip_martins-link-network-deactivation=1")); ?>" 
                                class="button button-link" style="color: #646970; margin-left: 15px;">Just Deactivate</a>
                         </div>
@@ -469,7 +469,7 @@ class martinsLinkNetworkAdmin
                         <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
                         
                         <h4 style="margin-bottom: 15px;">Are you more into free ads for your website?</h4>
-                        <a href="<?php echo admin_url('index.php?page=martins-link-network-install-ad-network'); ?>" class="button button-secondary" style="height: auto; padding: 8px 20px;">Install Martins Free Ad Network</a>
+                        <a href="<?php echo admin_url('index.php?page=martins-link-network-install-ad-network'); ?>" class="button button-secondary" style="height: auto; padding: 8px 20px;">Install LexonAds</a>
                     </div>
                 </div>
             </body>
@@ -488,10 +488,10 @@ class martinsLinkNetworkAdmin
             <div class="wrap">
                 <?php echo $this->getCommonStyles(); ?>
                 <div class="maadne-admin-page" style="margin-top: 40px;">
-                    <div class="maadne-logo">MARTINS<span>TOOLS</span></div>
+                    <div class="maadne-logo">LEXON<span>RANK</span></div>
                     <div class="maadne-card">
                         <div class="maadne-badge">Automated Installation</div>
-                        <h3 style="margin-top:0; margin-bottom: 25px;">Installing Martins Ad Network</h3>
+                        <h3 style="margin-top:0; margin-bottom: 25px;">Installing LexonAds</h3>
                         
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
                             <?php
@@ -522,7 +522,7 @@ class martinsLinkNetworkAdmin
                         
                         <div style="display: flex; gap: 10px; align-items: center;">
                             <a href="<?php echo admin_url("plugins.php"); ?>" class="button button-primary maadne-btn-primary">Go to Plugins</a>
-                            <a href="https://www.martinstools.com/ads" target="_blank" class="button button-secondary">How it works</a>
+                            <a href="https://lexonads.com" target="_blank" class="button button-secondary">How it works</a>
                         </div>
                     </div>
                 </div>
@@ -539,11 +539,8 @@ class martinsLinkNetworkAdmin
             $this->getDashboardKey();
 
             if ($this->key != "failed") {
-                wp_redirect("https://linknetwork.martinstools.com/admin/#/statswp/" . $this->url["host"] . "/" . $this->key);
+                wp_redirect("https://lexonrank.com/admin/#/statswp/" . $this->url["host"] . "/" . $this->key);
                 exit;
-            }
-            else {
-                $this->dashboardPage();
             }
         }            
             
@@ -552,15 +549,15 @@ class martinsLinkNetworkAdmin
     
     public function addMenuItems() 
     {
-        add_dashboard_page('Martins Link Building', 'Martins Link Building', 'manage_options', 'martins-link-network-dashboard', [$this, 'dashboardPage'], 2);
-        add_dashboard_page('Install Ad Network', 'Install Ad Network', 'manage_options', 'martins-link-network-install-ad-network', [$this, 'installAdNetwork'], 2);
+        add_dashboard_page('LexonRank', 'LexonRank', 'manage_options', 'martins-link-network-dashboard', [$this, 'dashboardPage'], 2);
+        add_dashboard_page('Install Free Ad Network', 'Install Free Ad Network', 'manage_options', 'martins-link-network-install-ad-network', [$this, 'installAdNetwork'], 2);
     }  
     
     
     public function addActionLinks($links) 
     {
         $mylinks = array(
-            "<a href='https://www.martinstools.com/linkbuilding' target='_blank'><b>Upgrade to VIP</b></a>",
+            "<a href='https://lexonrank.com' target='_blank'><b>Upgrade to VIP</b></a>",
             "<a href='" . admin_url('index.php?page=martins-link-network-dashboard') . "'>Dashboard</a>",
             "<a href='" . admin_url('index.php?page=martins-link-network-install-ad-network') . "'><b>Install Free Ad Network</b></a>",
             "<a href='https://www.martinstools.com#support' target='_blank'>Support</a>"
@@ -572,7 +569,7 @@ class martinsLinkNetworkAdmin
     
     public function getDashboardKey()
     {
-        $result = wp_remote_post("https://linknetwork.martinstools.com/api/domainsV2/?getKey", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email")]]);
+        $result = wp_remote_post("https://lexonrank.com/api/domainsV2/?getKey", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email")]]);
         if (!is_wp_error($result)) {
             $this->data = json_decode($result["body"]);
 

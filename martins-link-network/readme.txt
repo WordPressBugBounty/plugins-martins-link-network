@@ -1,128 +1,79 @@
-=== Martins Free SEO Link Building Network, Improve BackLinks, Rankings and Traffic ===
+=== LexonRank: Free Automated Link Building – Boost SEO, Backlinks & Traffic ===
 Contributors: bundgaard
-Tags: free,link,building,network,aioseo
+Tags: seo, link building, backlinks, traffic, seo strategy
 Requires at least: 5.0
 Tested up to: 7.0.0
-Stable tag: 1.2.45
+Stable tag: 1.2.46
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-GET SEO BACKLINKS FROM 3M+ ARTICLES NOW!!!  
-Free, easy SEO backlink link building network. Optimize SEO!
-
- 
-== Screenshots ==
-1. Link building statistics dashboard
-
+Automate your SEO with 100% free contextual backlinks from a network of 3M+ articles. Improve rankings and grow your organic traffic effortlessly.
 
 == Description ==
-By installing this SEO plugin, your website automatically gets easy backlinks from 3M+ articles by anonymously joining Martins 100% free backlink linkbuilding network for optimizing your SEO, improve your search engine rankings and get more free traffic.
 
-Works great for both WordPress blog SEO, website SEO and WooCommerce SEO.
+LexonRank is a powerful, automated SEO tool designed to help WordPress site owners build high-quality backlinks without the manual grind. By joining our anonymous, peer-to-peer network, your website gets featured in relevant content across millions of pages, helping search engines discover and rank your site higher.
 
+🚀 Why choose LexonRank?
+100% Automated: Install it, activate it, and watch your backlink profile grow.
+
+Contextual Backlinks: Links are placed on relevant keywords within the main content for maximum SEO impact.
+
+Safe & Footprint-Free: We use a non-reciprocal network (no direct exchanges) to keep your site safe from search engine penalties.
+
+Real-time Analytics: Track your link growth directly in your WordPress dashboard.
 
 = Interested in these services instead? =
-[Martins Free Ad Network](https://www.martinstools.com/ads)
-[The Only Bio Link That Pays You](https://www.martinstools.com/biolinks)
+[LexonAds: Free Ad Network](https://lexonads.com)
+[BioLinker: Free Link-in-bio Page That Pays You](https://biolinker.me)
 
-= What are the benefits? =
-Martins free & easy backlink linkbuilding network will assist your website in reaching top positions in search engines (SEO), using a safe, proven, anonymous, untraceable and tested link building strategy from SEO experts.
+⚙️ How it Works
+Our intelligent web crawler analyzes your content for the best SEO keywords. It then matches your site with other unique websites in the network:
 
+Keyword Matching: We find the best spots for your links in existing articles.
 
-= 3rd party service notice =
-This plugin is relying on the free 3rd party "Martins Tools" (Software as a service), and sends some of your urls to the service for creating a backlink statistics dashboard for you.
+Natural Rotation: Links rotate every 24 hours to maintain a natural growth profile.
 
-[Martins Tools](https://www.martinstools.com) - [Terms](https://www.martinstools.com/terms.html)
+Discreet Integration: Links appear as natural, clickable words within content, making it look 100% organic to Google.
 
+3rd Party Service Notice:
 
-= How does it work? =
-A few links will show up in all websites in the network.
-Websites will not exchange external links directly with other websites, as this strategy could give you some SEO problems.
-
-Instead, websites are linking into a network consisting of unique websites with unique owners, servers, IP's and domains to avoid any footprints, and gets the same type of unique backlinks in return from another part of the network to make the SEO linkbuilding as natural and non-traceable as possible for search engines.
-
-Links are contextual links when there is a keyword match. It's just a single word (or a few for longtail keywords) per link in a websites content, which becomes clickable.
-The last occurance of a keyword in the main content is chosen, which makes it quite discreet.
-
-Websites are automatically scanned for its best SEO keywords, including longtail keywords, for using throughout the network. This too, is for building links in a natural way for your SEO. Search engines loves links in combination with keywords.
-
-Both home pages and a selection of the websites subpages are being matched, to ensure a natural variation in the link building.
-When there are no direct keyword matches, links are placed discreetly below the website footers instead.
-
-All SEO linkbuilding rotates every 24 hours, and inactive websites are removed from the network. Search engines does not crawl all pages every day, thus many links will remain for a long time from a SEO perspective, but not visually.
-
-This plugin is just a simple piece of a giant SEO puzzle, as it is backed by a serious and really clever web crawler, just like Google itself.
-
-Works perfectly with Yoast, AIOSEO and internal link builders as a great upgrade. 
-
-
-= Are matched backlinks possible for small niches and foreign languages? =
-You need to test it with your own website. 
-
-Depending on your niche and language, you might see not so relevant backlinks. Your website might be rare in the network, and therefore not many websites will match yours.
-
-The network grows every day, and match quality is directly related to the size of the network. Just be patient and share the word. Non-relevant links will just have a lower backlink value than relevant links.
-
-You are welcome to try again at a later time, if these free backlinks can't be matched properly for your website at the moment.
-But please don't write a bad review, just because your specific website can't be matched properly for now.
-
-
-= How about offensive content? =
-Erotic websites are allowed, but these are automatically added to their own separate network.
-
-
-= Are statistics available? =
-Yes! In your admin dashboard menu, you will find a really beautiful dashboard called "Martins linkbuilding".
-This dashboard will give you 1 month of detailed statistics.
-
-
-= How do i validate the results? =
-Link building takes time for both search engines and Ahrefs to discover, so give it at least 14 days and use the great external tool, "Ahrefs free backlink checker", to watch your domain rating (pagerank) increase and to see a list of your new backlinks, which will grow over time and boost your SEO.
-[Ahrefs Backlink Checker](https://ahrefs.com/backlink-checker)
-
-
-== Changelog ==
-
-= 1.2.45 =
-* Updated cleanup during uninstall
-
-= 1.2.44 =
-* Updated design and links
+> ### 3rd Party Service Notice
+> This plugin relies on the free 3rd party "Martins Tools" (Software as a Service). It securely sends your URLs to the service to generate your backlinks and your private statistics dashboard.
+> 
+> By using this plugin, some of your URLs are sent to LexonRank to create your backlinks and statistics dashboard.
+> * **Service Home:** [https://lexonrank.com](https://lexonrank.com)
+> * **Terms of Service:** [https://lexonrank.com/terms.html](https://lexonrank.com/terms.html)
+> * **Terms of Service (Martins Tools):** [https://www.martinstools.com/terms.html](https://www.martinstools.com/terms.html)
 
 
 == Installation ==
 
-= Method 1 =
+Go to Plugins > Add New in your WordPress dashboard.
 
-* Search for "Martins Link building" directly in your WordPress admin panel under "Plugins, Add new".
-* Click "Install" and then "Activate".
-* Done!
+Search for "LexonRank".
 
-= Method 2 =
+Click Install Now and then Activate.
 
-* Upload the "martinsLinkNetwork" plugin zip file through the "Plugins" menu in WordPress.
-* Activate the plugin through the "Plugins" menu in WordPress.
-* Done!
-
-= Method 3 =
-
-* Upload the "martinsLinkNetwork" plugin to your /wp-content/plugins/ directory.
-* Activate the plugin through the "Plugins" menu in WordPress.
-* Done!
-
-
+Navigate to the "LexonRank" menu to see your statistics.
 
 == Frequently Asked Questions ==
 
-= Anything i should do after plugin installation? =
+= Is it really free? =
+Yes! The network is 100% free to join for all WordPress users.
 
-* Not at all... Just brew a coffee, sit back and enjoy your new backlinks coming in.
+= Is it safe for SEO? =
+Absolutely. Our strategy avoids direct 1-to-1 link exchanges. By using a vast network of unique IPs and domains, the link building appears organic to search engine crawlers.
 
-= Why do my DR sometimes go down? =
+= When will I see results? =
+SEO takes time. We recommend waiting at least 14 days before checking Ahrefs.com to see your Domain Rating (DR) and backlink count increase.
 
-* You might see it go up and down, but generally it will go up. This is because the backlinks are constantly changing and thus sometimes they were stronger yesterday than today. Don't give up in a short time. Building a strong DR takes time.
+== Screenshots ==
 
-= Where do i find the statistics? =
+The beautiful statistics dashboard showing your active backlinks and SEO growth.
 
-* Click "Dashboard, Martins link building" in upper-left corner of your WordPress admin panel.
+== Changelog ==
+
+= 1.2.46 =
+
+Renamed plugin to LexonRank
