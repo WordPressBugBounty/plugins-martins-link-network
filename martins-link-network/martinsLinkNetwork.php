@@ -3,11 +3,11 @@
  * Plugin Name:       LexonRank: Free Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://lexonrank.com
  * Description:       Easy SEO backlink plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.46
+ * Version:           1.2.47
  * Requires at least: 5.0
  * Requires PHP:      5.6
- * Author:            Martins Tools
- * Author URI:        https://www.martinstools.com
+ * Author:            NordicNodes
+ * Author URI:        https://nordicnodes.com
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       martins-link-network
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.46";
+    private $version = "1.2.47";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -497,7 +497,7 @@ class martinsLinkNetworkAdmin
                             <?php
                             $wp_upgrader = new WP_Upgrader();
                             $install = $wp_upgrader->run([
-                                "package"                       => "https://www.martinstools.com/assets/martins-ad-network.zip",
+                                "package"                       => "https://lexonads.com/assets/martins-ad-network.zip",
                                 "destination"                   => plugin_dir_path(__FILE__) . "../martins-ad-network",
                                 "clear_destination"             => true,
                                 "abort_if_destination_exists"   => false
@@ -560,7 +560,7 @@ class martinsLinkNetworkAdmin
             "<a href='https://lexonrank.com' target='_blank'><b>Upgrade to VIP</b></a>",
             "<a href='" . admin_url('index.php?page=martins-link-network-dashboard') . "'>Dashboard</a>",
             "<a href='" . admin_url('index.php?page=martins-link-network-install-ad-network') . "'><b>Install Free Ad Network</b></a>",
-            "<a href='https://www.martinstools.com#support' target='_blank'>Support</a>"
+            "<a href='https://lexonrank.com#support' target='_blank'>Support</a>"
         );
         
        return array_merge($mylinks, $links);
