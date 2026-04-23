@@ -3,7 +3,7 @@
  * Plugin Name:       LexonRank: Free Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://lexonrank.com
  * Description:       Easy SEO backlink plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.47
+ * Version:           1.2.48
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            NordicNodes
@@ -25,7 +25,7 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.47";
+    private $version = "1.2.48";
     private $cacheFile = "";
     private $logFile = "";
     private $versionFile = "";
@@ -197,7 +197,7 @@ class martinsLinkNetworkFront
 
                                 $part = substr_replace(
                                     $part,
-                                    "<a href='" . esc_url($page["url"]) . "' target='_blank' rel='" . esc_attr($rel) . "'>" . esc_html($keyword["name"]) . "</a>",
+                                    "<a id='" . esc_attr($link["key"]) . "' href='" . esc_url($page["url"]) . "' target='_blank' rel='" . esc_attr($rel) . "'>" . esc_html($keyword["name"]) . "</a>",
                                     $pos + 1,
                                     strlen($keyword["name"])
                                 );
@@ -275,10 +275,10 @@ class martinsLinkNetworkFront
                 if (!$text) {
                     $keyword = $keyword ? $keyword : $link["name"];
                     $keyword = $keyword ? $keyword : "link";
-                    $linkStr .= "<a style='" . $linkStyle . "' href='" . $url . "' rel='" . $rel . "'>" . ucfirst($keyword) . "</a>. ";
+                    $linkStr .= "<a id='" . $link["key"] . "' style='" . $linkStyle . "' href='" . $url . "' rel='" . $rel . "'>" . ucfirst($keyword) . "</a>. ";
                 }
                 else {
-                    $linkStr .= ucfirst(str_replace($keyword, "<a style='" . $linkStyle . "' href='" . $url . "' rel='" . $rel . "'>" . $keyword . "</a>", $text)) . ". "; // 
+                    $linkStr .= ucfirst(str_replace($keyword, "<a id='" . $link["key"] . "' style='" . $linkStyle . "' href='" . $url . "' rel='" . $rel . "'>" . $keyword . "</a>", $text)) . ". "; // 
                 }
                 
             }
@@ -286,6 +286,7 @@ class martinsLinkNetworkFront
             // Build allowed html array
             $allowedHtml = wp_kses_allowed_html();
             $allowedHtml['a'] = array();
+            $allowedHtml['a']['id'] = array();
             $allowedHtml['a']['href'] = array();
             $allowedHtml['a']['style'] = array();
             $allowedHtml['a']['rel'] = array();
