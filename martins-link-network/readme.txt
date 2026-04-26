@@ -3,7 +3,7 @@ Contributors: bundgaard
 Tags: ai, link building, backlinks, seo, automation
 Requires at least: 5.0
 Tested up to: 7.0.0
-Stable tag: 1.2.48
+Stable tag: 1.2.49
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -63,11 +63,8 @@ Patience is key in SEO. While our AI works instantly, data indexing in tools lik
 
 == Changelog ==
 
+= 1.2.49 =
+* Optimized plugin version handling.
+
 = 1.2.48 =
 * Prepared for a website matching update.
-
-= 1.2.47 =
-* Updated author website.
-
-= 1.2.46 =
-* Renamed plugin to LexonRank.

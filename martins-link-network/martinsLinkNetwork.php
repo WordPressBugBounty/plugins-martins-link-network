@@ -3,7 +3,7 @@
  * Plugin Name:       LexonRank: Free Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://lexonrank.com
  * Description:       Easy SEO backlink plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.48
+ * Version:           1.2.49
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            NordicNodes
@@ -16,6 +16,7 @@
 
 if(!defined ('ABSPATH')) {die;} // Block direct access to the file
 
+define('MAADNE_LINK_NETWORK_VERSION', '1.2.49');
 
 require_once(ABSPATH . "/wp-admin/includes/plugin.php");
 require_once(ABSPATH . "/wp-admin/includes/file.php");
@@ -25,10 +26,8 @@ require_once(ABSPATH . "/wp-admin/includes/class-wp-upgrader.php");
 class martinsLinkNetworkFront 
 {
         
-    private $version = "1.2.48";
     private $cacheFile = "";
     private $logFile = "";
-    private $versionFile = "";
     private $links = [];
     private $data = "";
     private $usedKeyword = [];
@@ -40,7 +39,6 @@ class martinsLinkNetworkFront
         $uploadDir = wp_upload_dir();        
         $this->cacheFile = $uploadDir["basedir"] . "/martinsLinkNetworkCache.txt";
         $this->logFile = $uploadDir["basedir"] . "/martinsLinkNetworkLog.txt";
-        $this->versionFile = $uploadDir["basedir"] . "/martinsLinkNetworkVersion.txt";
     }
      
     
@@ -69,14 +67,14 @@ class martinsLinkNetworkFront
         
         // Clean cache and log if version has changed
         $version = get_option("martinslinknetwork_version");
-        if ($version !== $this->version) {
+        if ($version !== MAADNE_LINK_NETWORK_VERSION) {
             if (is_file($this->cacheFile)) {
                 unlink($this->cacheFile);
             }
             if (is_file($this->logFile)) {
                 unlink($this->logFile);
             }
-            update_option("martinslinknetwork_version", $this->version, true);
+            update_option("martinslinknetwork_version", MAADNE_LINK_NETWORK_VERSION, true);
         }
         
         // Get log data
@@ -105,7 +103,7 @@ class martinsLinkNetworkFront
                 }
                 
                 // Save cache
-                $result = wp_remote_post("https://lexonrank.com/api/domainsV2", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email"), "version" => $this->version, "logData" => $logData]]);
+                $result = wp_remote_post("https://lexonrank.com/api/domainsV2", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email"), "version" => MAADNE_LINK_NETWORK_VERSION, "logData" => $logData]]);
                 if (!isset($result->errors)) {
                     $this->data = $result["body"];
                     $wp_filesystem->put_contents($this->cacheFile, $this->data);
@@ -570,7 +568,8 @@ class martinsLinkNetworkAdmin
     
     public function getDashboardKey()
     {
-        $result = wp_remote_post("https://lexonrank.com/api/domainsV2/?getKey", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email")]]);
+        $result = wp_remote_post("https://lexonrank.com/api/domainsV2/?getKey", ['timeout' => 30, 'method' => 'POST', 'body' => ["url" => get_site_url(), "email" => get_option("admin_email"), "version" => MAADNE_LINK_NETWORK_VERSION]]);
+        
         if (!is_wp_error($result)) {
             $this->data = json_decode($result["body"]);
 
