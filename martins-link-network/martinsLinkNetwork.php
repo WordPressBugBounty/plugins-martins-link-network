@@ -3,7 +3,7 @@
  * Plugin Name:       LexonRank: Free Link Building - Genuine SEO BackLinks
  * Plugin URI:        https://lexonrank.com
  * Description:       Easy SEO backlink plugin for WordPress, SEO backlinks for blogs, SEO backlinks for WooCommerce. Boost your Ecommerce business sales with easy automatic link building.
- * Version:           1.2.49
+ * Version:           1.2.50
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            NordicNodes
@@ -16,7 +16,7 @@
 
 if(!defined ('ABSPATH')) {die;} // Block direct access to the file
 
-define('MAADNE_LINK_NETWORK_VERSION', '1.2.49');
+define('MAADNE_LINK_NETWORK_VERSION', '1.2.50');
 
 require_once(ABSPATH . "/wp-admin/includes/plugin.php");
 require_once(ABSPATH . "/wp-admin/includes/file.php");
@@ -107,6 +107,9 @@ class martinsLinkNetworkFront
                 if (!isset($result->errors)) {
                     $this->data = $result["body"];
                     $wp_filesystem->put_contents($this->cacheFile, $this->data);
+                    
+                    // Purge external cache plugins
+                    $this->purgeExternalCaches();
                 }
             }
         }
@@ -126,6 +129,39 @@ class martinsLinkNetworkFront
         if ($this->data <> "") {
             $this->links = json_decode($this->data, true);
         }  
+    }
+    
+    
+    function purgeExternalCaches() {
+        // WP Rocket
+        if ( function_exists( 'rocket_clean_domain' ) ) {
+            rocket_clean_domain();
+        }
+
+        // W3 Total Cache
+        if ( function_exists( 'w3tc_flush_all' ) ) {
+            w3tc_flush_all();
+        }
+
+        // LiteSpeed Cache
+        if ( has_action( 'litespeed_purger_purge_all' ) || defined( 'LSCWP_V' ) ) {
+            do_action( 'litespeed_purger_purge_all' );
+        }
+
+        // WP Super Cache
+        if ( function_exists( 'wp_cache_clear_cache' ) ) {
+            wp_cache_clear_cache();
+        }
+        
+        // FlyingPress
+        if ( class_exists( '\FlyingPress\Purge' ) && method_exists( '\FlyingPress\Purge', 'purge_everything' ) ) {
+            \FlyingPress\Purge::purge_everything();
+        }
+
+        // NitroPack
+        if ( function_exists( 'nitropack_sdk_purge' ) ) {
+            nitropack_sdk_purge(null, null, 'LexonRank received new data');
+        }
     }
     
     
