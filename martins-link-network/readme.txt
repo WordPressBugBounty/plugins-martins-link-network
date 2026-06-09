@@ -28,13 +28,15 @@ Our **AI SEO algorithm** scans millions of pages to place your links in relevant
 * **Real-time SEO Analytics:** Track your backlink growth and indexing status directly in your WordPress dashboard.
 
 ### How the AI Engine Works
+**Please note: By becoming part of this free network, your website will connect with others through shared links, helping drive mutual traffic.**
+
 Our advanced **AI Web Crawler** performs deep-tissue analysis of your site's architecture to identify the best SEO keywords. 
 
 **Smart Keyword Matching:** The AI finds the most relevant spots for your backlinks in existing high-traffic articles.
 
 **Natural AI Rotation:** Links rotate every 24 hours via our algorithm to maintain a natural, organic growth profile that search engines love.
 
-**Discreet AI Integration:** Links are woven into content as natural, clickable words, making them 100% organic to Google and Bing.
+**Discreet AI Integration:** Links are woven into the content of all websites in the network, including yours, as natural, clickable words, making them 100% organic to Google and Bing.
 
 > ### 3rd Party Service Notice
 > This plugin relies on the free 3rd party service **"LexonRank by NordicNodes" (SaaS)**. It securely connects to the AI network to generate your backlinks and private statistics dashboard.
